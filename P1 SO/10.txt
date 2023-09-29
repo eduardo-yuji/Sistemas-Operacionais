@@ -1,0 +1,36 @@
+Sobre processos, explique:
+
+a) o que é um processo?
+    É uma instância de um programa em execução
+    É uma entidade ativa
+    Possui contexto e estado
+        Cada instrução executada pertence a um processo
+
+
+b) qual a diferença entre processos e threads?
+    threads: É um processo 
+            Compartilha código, dados, e recursos de task
+            
+    Processo: É um programa em execução
+            Não compartilha dados
+
+    Um processo é todo programa em execuão, ele representa uma unidade de trabalho no SO
+Thread é uma unidade básica de uso de CPU. Um thread compartilha com outras threads do mesmo processo a seção no código, 
+data e outros recursos do SO como memória por exemplo. Uma thread é como se fosse uma forma de um processo se autodividir
+É mais vantajoso ter um processo com multiplas threads pois criar um processo é mais custoso do que criar uma thread
+    
+
+c) explique detalhadamente o porque que processos não compartilham dados.
+    Não, processos pai e filho são como copias, ao usar fork para criar um filho estamos duplicando o código, 
+ou seja, 2 execuções, quando o filho terminar o pai executa e termina.
+Processos não compartilham dados por questão de segurança, onde dois processos poderiam acessar os dados um 
+do outro podendo ocasionar problemas de segurança e também questão de eficiencia para controlar e sincronizar o 
+acesso aos dados, tendo assim uma redução no desempenho do SO
+
+
+d) como os processos são criados em um sistem baseado em linux?
+
+e) Sobre a posix, o que o comando  execv("") faz?
+    Fork e exec, fork para criar um proceso filho e exec para fazer uma substituição no processo com outro programa.
+Por fazer parte do conjunto de funções exec ela irá substituir o processo atual, a função execv substitui o 
+processo atual com o programa informado no parametro da funão, no caso dela é o path do progama, ex: /bin/ls
