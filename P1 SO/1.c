@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void handlerALRM(int Signum){
-    write(1, "Oi Sefora <3\n", 13);
+    write(1, "Bons estudos\n", 13);
 }
 
 int main(){
