@@ -6,6 +6,7 @@
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/wait.h>
+
  
 #define SHM_SIZE 1024
 
@@ -29,7 +30,7 @@ int producer(int n)
 	
 	data[i] = (char) i + 0x61;	
 	printf("Stored... %c \n", data[i]);
-	
+	//flags[3] = turn
 	flags[3] = 1;
 	
 	flags[0] = 0;
@@ -53,9 +54,9 @@ int consumer(int n)
  	dado = data[i];
 	
 	data[i] = ' ';  
-	
 	printf("Consumed... %c \n", dado);
 	
+    
 	flags[3] = 0;
 	
 	flags[1] = 0;
@@ -83,12 +84,13 @@ int main()
     flags = (malloc(3*sizeof(int)));               //     2
     flags = shmat(flagsid, (void *)0, 0);          //  
     
-    
+    flags[0]=1;
+    flags[1]=0;
+    flags[3]=0;
       
     int pid = fork();
    	
     	
-   	
     if(pid == 0){
 	    producer(5);	    
     }else{
@@ -100,8 +102,6 @@ int main()
     	    
     	    shmdt(flags);                             //segmento 4 
     	    shmctl(flagsid, IPC_RMID, NULL);		// 
-    	    
-    	    
     	    		   
     }	
     
