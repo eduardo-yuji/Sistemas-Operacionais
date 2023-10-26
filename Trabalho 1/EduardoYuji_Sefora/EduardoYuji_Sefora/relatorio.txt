@@ -1,0 +1,20 @@
+Processos na Fila do Shortest Job First:
+a b c d 
+Tempo de CPU requerida pelos processos:
+9 4 8 5 
+Tempo de Chegada dos processos:
+0 1 2 3 
+
+Linha do tempo:
+|0|---a---||1|---b---||2|---b---||3|---b---||4|---b---||5|---d---||6|---d---||7|---d---||8|---d---||9|---d---||10|---a---||11|---a---||12|---a---||13|---a---||14|---a---||15|---a---||16|---a---||17|---a---||18|---c---||19|---c---||20|---c---||21|---c---||22|---c---||23|---c---||24|---c---||25|---c---|26|
+
+Tempo de Resposta:
+a b c d 
+18 4 24 7 
+
+Tempo de Espera:
+a b c d 
+9 0 16 2 
+
+Tempo Médio de Resposta: 13.25
+Tempo Médio de Espera: 6.75
