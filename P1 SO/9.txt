@@ -1,2 +1,0 @@
-A tecnica de multiprogramação faz com que a CPU não fique ociosa aguardando um processo.
-A memória é divida em várias partes, realizando vários processos ao mesmo tempo, usando o máximo da CPU
