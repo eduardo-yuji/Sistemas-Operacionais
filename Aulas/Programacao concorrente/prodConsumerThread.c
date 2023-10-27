@@ -56,7 +56,7 @@ void *consumer()
  
     int in = 0;
     
-    while(1){   
+    while(1){
     
         while(counter == 0);
 
