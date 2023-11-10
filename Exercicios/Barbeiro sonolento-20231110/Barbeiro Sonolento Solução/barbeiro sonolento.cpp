@@ -24,9 +24,9 @@ int barbeiro(int i) {
             printf("O barbeiro está cortando o cabelo de um cliente. Clientes esperando: %d\n", clientes_esperando);
             mutex.CCliente();
             mutex.unlock();
+            sleep(3);
         }
         //cortando o cabelo
-        sleep(3);
     }
     
     return 0;
