@@ -31,14 +31,14 @@ void *producer()
  
     while(1){   
     
-    while(counter == 5);
+        while(counter == 5);
            
         sem_wait(&sem);
 
-            data[in] = (char) in + 0x61;   
-            printf("Stored... %c \n", data[in]);
-            
-            counter++;       
+        data[in] = (char) in + 0x61;   
+        printf("Stored... %c \n", data[in]);
+        
+        counter++;       
     
         sem_post(&sem);
 
@@ -61,13 +61,13 @@ void *consumer()
 		   
         sem_wait(&sem);
     
-            dado = data[in];
+        dado = data[in];
 
-            data[in] = ' '; 
+        data[in] = ' '; 
 
-            printf("Consumed... %c \n", dado);
+        printf("Consumed... %c \n", dado);
 
-            counter--;   
+        counter--;   
 
         sem_post(&sem);
         in = ++in % 5;

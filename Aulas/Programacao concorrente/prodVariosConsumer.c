@@ -40,19 +40,17 @@ void *producer()
             data[in] = (char) in + 0x61;   
             printf("Stored... %c \n", data[in]);
             
-            in = ++in % 5;
-            
             counter++;       
         
         pthread_mutex_unlock(&mut);
+        in = ++in % 5;
     
     }
        
-    
 }
  
 void *consumer1(){
-    printf("Consumer was born!\n");
+    printf("Consumer 1 was born!\n");
  
     int in = 0;
     
@@ -70,18 +68,18 @@ void *consumer1(){
             printf("Consumed... %c \n", dado);
             printf("Thread 1 Consumed %c Counter %d\n", dado, counter);
 
-            in = ++in % 5;
-
             counter--;   
 
         pthread_mutex_unlock(&mut);
+
+        in = ++in % 5;
             
     }
  
 }
 
 void *consumer2(){
-    printf("Consumer was born!\n");
+    printf("Consumer 2 was born!\n");
  
     int in = 0;
     
@@ -90,7 +88,7 @@ void *consumer2(){
     
         while(counter == 0);
 		   
-            pthread_mutex_lock(&mut);
+        pthread_mutex_lock(&mut);
 
             dado = data[in];
 
@@ -99,27 +97,26 @@ void *consumer2(){
             printf("Consumed... %c \n", dado);
             printf("Thread 2 Consumed %c Counter %d\n", dado, counter);
 
-            in = ++in % 5;
-
             counter--;   
 
         pthread_mutex_unlock(&mut);
+
+        in = ++in % 5;
             
     }
  
 }
 
 void *consumer3(){
-    printf("Consumer was born!\n");
+    printf("Consumer 3 was born!\n");
  
     int in = 0;
     
-
     while(1){   
     
         while(counter == 0);
 		   
-            pthread_mutex_lock(&mut);
+        pthread_mutex_lock(&mut);
 
             dado = data[in];
 
@@ -128,11 +125,11 @@ void *consumer3(){
             printf("Consumed... %c \n", dado);
             printf("Thread 3 Consumed %c Counter %d\n", dado, counter);
 
-            in = ++in % 5;
-
             counter--;   
 
         pthread_mutex_unlock(&mut);
+
+        in = ++in % 5;
             
     }
  
@@ -149,7 +146,6 @@ int main()
 
     data = (malloc(5*sizeof(char)));               //     1        
    
-   
     pthread_create(&p, NULL, producer, NULL);
     pthread_create(&c, NULL, consumer1, NULL);
     pthread_create(&c, NULL, consumer2, NULL);
@@ -158,8 +154,6 @@ int main()
     pthread_join(p, NULL);   
     pthread_join(c, NULL);
  
-    
-        
     return 0;
     
 }    
